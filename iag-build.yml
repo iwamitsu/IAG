@@ -1,0 +1,32 @@
+# Copyright contributors to the Application Gateway project
+
+kind: "BuildConfig"
+apiVersion: "v1"
+
+metadata:
+  # The name which will be given to our build.
+  name: "iag-build"
+  
+spec:
+  runPolicy: "Serial"
+  
+  # The source is obtained from the ibm-application-gateway-resources GitHub 
+  # repository.  It simply contains a Dockerfile which will be used to create a 
+  # new image from the IBM Application Gateway image, and will embed a sample 
+  # configuration within this image.
+  source:
+    git:
+      uri: "https://github.com/iwamitsu/IAG"
+    contextDir: "build"
+    
+  # Create the new image using the 'docker build' command.
+  strategy:
+    dockerStrategy:
+      forcePull: false
+      
+  # The built image will pushed be to the iag-sample-build stream
+  # in the OpenShift integrated registry.
+  output:
+    to:
+      kind: "ImageStreamTag"
+      name: "iag-build:latest"
