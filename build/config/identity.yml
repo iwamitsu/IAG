@@ -1,0 +1,11 @@
+# Copyright contributors to the Application Gateway project
+
+---
+version: 21.12
+
+identity:
+  oidc:
+    discovery_endpoint: "https://isvidaasjp.verify.ibm.com/oidc/endpoint/default/.well-known/openid-configuration"
+    client_id: "d4b3529a-5803-4962-b80f-95763c274d89"
+    client_secret: "9tJ7y87Cjc"
+    mapped_identity: "{iss}/{sub}"
