@@ -1,2 +1,2 @@
 # IAG
-IBM Application Gateway
+IBM Application Gateway sample yaml
